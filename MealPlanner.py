@@ -18,25 +18,38 @@ class Meal:
         meal_sides = random.choices((sides), k=2)
         meat_prep = random.choice(preparation_method)
 
+        #check sides against each other
+        if meal_sides[0] == meal_sides[1]:
+            repeatSideIndex = sides.index(meal_sides[0])
+            if repeatSideIndex == len(sides) - 1:
+                repeatSideIndex = 0
+            else:
+                repeatSideIndex += 1
+            
+            meal_sides[0] = sides[repeatSideIndex]
+            
+
+
         self.meat = meal_meat
         self.prep = meat_prep
         self.sides = meal_sides
 
-    # This returns true if all of the properties are the same
-    def compare(self, other_meal):
+    # return true if any of the following properties are the same (meat, prep & sides)
+    def hasSameMealProps(self, other_meal):
         if other_meal == None:
             return False
-        if other_meal.meat != self.meat:
-            return False
-        if other_meal.prep != self.prep:
-            return False
-        if other_meal.sides[0] not in self.sides:
-            return False
-        if  other_meal.sides[1] not in self.sides:
-            return False
+        if other_meal.meat == self.meat:
+            return True
+        if other_meal.prep == self.prep:
+            return True
+        if other_meal.sides[0] in self.sides:
+            return True
+        if  other_meal.sides[1] in self.sides:
+            return True
+        return False
 
     def print(self):
-        print(self.meat + " , "+ self.prep + ", " + self.sides[0] + ", " + self.sides[1])
+        print(self.prep + " " + self.meat + " , " + self.sides[0] + ", " + self.sides[1])
 
             
 
@@ -47,7 +60,7 @@ def meal_generator(meal_day, num_meals):
         current_meal = Meal()
 
         # Comparing the items in currnet meal to the previous meal generated
-        if current_meal.compare(prev_meal):
+        while current_meal.hasSameMealProps(prev_meal):
             current_meal = Meal()
             
         #print out results of meal gernerated
