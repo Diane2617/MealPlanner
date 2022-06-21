@@ -1,4 +1,5 @@
 import random
+from num2words import num2words
 
 #List of the types of meat used regularly and different preparation methods
 
@@ -50,7 +51,7 @@ class Meal:
 
     def print(self, day_count):
         if day_count > 1:
-            print(f"""For your meal on day {day_count}, you will be having {self.prep} {self.meat} with {self.sides[0]} and {self.sides[1]}.""")
+            print(f"""For your meal on day {num2words(day_count)}, you will be having {self.prep} {self.meat} with {self.sides[0]} and {self.sides[1]}.""")
         else:
             print(f"""For this meal you will be having {self.prep} {self.meat} with {self.sides[0]} and {self.sides[1]}.""")
             
