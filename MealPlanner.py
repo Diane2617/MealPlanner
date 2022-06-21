@@ -48,9 +48,11 @@ class Meal:
             return True
         return False
 
-    def print(self):
-        print(self.prep + " " + self.meat + " , " + self.sides[0] + ", " + self.sides[1])
-
+    def print(self, day_count):
+        if day_count > 1:
+            print(f"""For your meal on day {day_count}, you will be having {self.prep} {self.meat} with {self.sides[0]} and {self.sides[1]}.""")
+        else:
+            print(f"""For this meal you will be having {self.prep} {self.meat} with {self.sides[0]} and {self.sides[1]}.""")
             
 
 def meal_generator(meal_day, num_meals):
@@ -64,12 +66,15 @@ def meal_generator(meal_day, num_meals):
             current_meal = Meal()
             
         #print out results of meal gernerated
-        current_meal.print()
+        current_meal.print(meal_day)
         # Updating previous meal for next iteration
         prev_meal = current_meal
         meal_day += 1
 
-    print("Do enjoy your meals.")
+    if num_meals <1:
+        print("Do enjoy your meals.")
+    else: 
+        print("Do enjoy your meal.")
 
 # Run meal function based on user's choice of meal days needed
 def meal_print():
