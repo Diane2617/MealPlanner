@@ -34,7 +34,7 @@ I will give a a protein, and a method of preparation, with two sides.<p>
 @app.route('/meal', methods=["GET", "POST"])
 def mealshow():
     mealdisplay = meal_generator(int(request.form["NumDays"]))
-    return f'''<p> 
+    return f'''<p> Hi {request.form["Name"]}
     <ul>
     {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
   
