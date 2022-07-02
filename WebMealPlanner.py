@@ -3,7 +3,7 @@ from flask import Flask, request
 
 
 # import function from mealplanner
-from MealPlanner import meal_print
+from MealPlanner import Meal, meal_generator
 
 #Create Flask object
 app = Flask(__name__)
@@ -25,7 +25,13 @@ I will give a a protein, and a method of preparation, with two sides.<p>
       <label for="NumDays">Number of days you would like the meal for:</label>
       <textarea name="NumDays"></textarea>
     </p>
-    <p><input type="submit" name="submit_meal"/></p>
 </form>
 
+<a href="/meal">Generate meal</a>
 '''
+
+
+@app.route('/meal')
+def mealshow(NumDays):
+    mealdisplay = meal_generator(NumDays)
+    return f'<p> {mealdisplay} </p>'
