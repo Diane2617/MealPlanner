@@ -1,1 +1,1 @@
-web: gunicorn WebMealPlanner
+web: gunicorn WebMealPlanner:WelcomeGreeting
