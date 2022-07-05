@@ -13,7 +13,8 @@ app = Flask(__name__)
 def WelcomeGreeting():
     return f'''<h1>Welcome to the Meal Planner!<h1>
     <p>I can take the headache out of deciding what to cook. 
-I will give a a protein, and a method of preparation, with two sides.<p>
+I can give you a protein, and a method of preparation, with two sides.
+Alternatively, I can build a meal to your preference. <p>
 
 <form action="/meal" method="POST">
     <h3>Input some information to help me get you started</h3>
@@ -40,6 +41,10 @@ def mealshow():
   
    
 </ul> </p>'''
+
+@app.route('/custom')
+def customMeal():
+  pass
 
 if __name__ == '__main__':
     app.run(threaded=True)
