@@ -15,3 +15,6 @@ Application then builds meals with their preferences based on the user's desired
 2) Amend first function under Meal class to take additional parameters/arguments for each category
 3) Amend body of the function to ensure that there is a method for each category
 4) Amend 'if' statement 
+5) On landing/home page include link for creating customer meals
+6) Amend wording and create link for generating meals based on how currently defined
+7) Consideration - use one page for generating meals whether custom or static
