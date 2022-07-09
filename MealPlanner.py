@@ -3,37 +3,31 @@ from num2words import num2words
 
 #List of the types of meat used regularly and different preparation methods
 
-meat_kind = ["Drumsticks", "Thigh", "Wings", "Fish", "Pig tails", "Back & Neck", "Turkey"]
+protein = ["Drumsticks", "Thigh", "Wings", "Fish", "Pig tails", "Back & Neck", "Turkey"]
 preparation_method = ["Baked", "Fried", "Stewed", "Curried", "Combined with legumes"]
 
 #List of different side dishes 
-sides = ["Rice and lentils", "Rice and pink beans", "Vegetable Rice", "Sauteed Macaroni", "Sauteed Sphagetti", "Macaroni Salad",
+sides = ["Rice and legumes", "Rice and pink beans", "Vegetable Rice", "Sauteed Macaroni", "Sauteed Sphagetti", "Macaroni Salad",
  "Provision pie", "Macaroni and Cheese pie", "Stuffed Potatoes", "Potato Salad"]
+
+#List of common vegetables
+vegetables = ["Lettuce", "Carrot", "Cabbage", "Cucumber", "Pumpkin", "Tomatoes"]
 
 
 
 #Function for creating a one day meal plan
 class Meal:
-    def __init__(self):
-        meal_meat = random.choice(meat_kind)
-        meal_sides = random.choices((sides), k=2)
+    def __init__(self, NumSides, NumVeges):
+        meal_meat = random.choice(protein)
+        meal_sides = random.sample((sides), k= NumSides)
         meat_prep = random.choice(preparation_method)
+        meal_veges = random.sample(vegetables, k= NumVeges)
 
-        #check sides against each other
-        if meal_sides[0] == meal_sides[1]:
-            repeatSideIndex = sides.index(meal_sides[0])
-            if repeatSideIndex == len(sides) - 1:
-                repeatSideIndex = 0
-            else:
-                repeatSideIndex += 1
-            
-            meal_sides[0] = sides[repeatSideIndex]
-            
-
-
+        
         self.meat = meal_meat
         self.prep = meat_prep
         self.sides = meal_sides
+        self.vege = meal_veges
         
 
     # return true if any of the following properties are the same (meat, prep & sides)
@@ -44,13 +38,13 @@ class Meal:
             return True
         if other_meal.prep == self.prep:
             return True
-        if other_meal.sides[0] in self.sides:
+        if any(s in self.sides for s in other_meal.sides):
             return True
-        if  other_meal.sides[1] in self.sides:
+        if any(v in self.vege for v in other_meal.veges):
             return True
         return False
 
-    def print(self, day_count):
+    def Mealdisplay(self, day_count):
         if day_count > 1:
             return f"""For your meal on day {num2words(day_count)}, you will be having {self.prep} {self.meat} with {self.sides[0]} and {self.sides[1]}."""
         else:
