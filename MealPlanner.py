@@ -27,7 +27,7 @@ class Meal:
         self.meat = meal_meat
         self.prep = meat_prep
         self.sides = meal_sides
-        self.vege = meal_veges
+        self.veges = meal_veges
         
 
     # return true if any of the following properties are the same (meat, prep & sides)
@@ -40,30 +40,30 @@ class Meal:
             return True
         if any(s in self.sides for s in other_meal.sides):
             return True
-        if any(v in self.vege for v in other_meal.veges):
+        if any(v in self.veges for v in other_meal.veges):
             return True
         return False
 
     def Mealdisplay(self, day_count):
         if day_count > 1:
-            return f"""For your meal on day {num2words(day_count)}, you will be having {self.prep} {self.meat} with {self.sides[0]} and {self.sides[1]}."""
+            return f"""For your meal on day {num2words(day_count)}, you will be having {self.prep} {self.meat} with {self.sides} and {self.veges}."""
         else:
-            return f"""For this meal you will be having {self.prep} {self.meat} with {self.sides[0]} and {self.sides[1]}."""
+            return f"""For this meal you will be having {self.prep} {self.meat} with {self.sides} and {self.veges}."""
             
 
-def meal_generator(num_meals, meal_day=1):
+def meal_generator(num_meals, NumSides, NumVeges, meal_day=1):
     prev_meal = None
     meals = []
     while meal_day <= num_meals:
         
-        current_meal = Meal()
+        current_meal = Meal(NumSides,NumVeges)
 
         # Comparing the items in currnet meal to the previous meal generated
         while current_meal.hasSameMealProps(prev_meal):
-            current_meal = Meal()
+            current_meal = Meal(NumSides,NumVeges)
             
         #print out results of meal gernerated
-        meals.append(current_meal.print(meal_day))
+        meals.append(current_meal.Mealdisplay(meal_day))
         # Updating previous meal for next iteration
         prev_meal = current_meal
         meal_day += 1
@@ -89,7 +89,7 @@ I will give a a protein, and a method of preparation, with two sides.
     num_meals = int(input("How many days would you like a meal plan for? "))
     meal_generator(1, num_meals)
 
-    meal_print()
+print(meal_generator(5, 1, 1))
 
 
 
