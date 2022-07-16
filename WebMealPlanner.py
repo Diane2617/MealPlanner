@@ -11,18 +11,20 @@ app = Flask(__name__)
 
 @app.route('/')
 def InitialGreeting():
-    return  f'''<form action="/home" method="POST">
+    return  f'''
+    
+  <form action="/home" method="POST">
     <h3>Hi, what's your name?</h3>
     <p>
       <label for="Meal">Your Name:</label>
       <input type="text" name="Name"/>
     </p>
     <input type="submit"/> 
-    </form>
+  </form>
     '''
 
 
-@app.route('/home')
+@app.route('/home', methods=["GET", "POST"])
 def WelcomeGreeting():
     return f'''<h1>Welcome {request.form["Name"]} to the Meal Planner!<h1>
     <p>I can take the headache out of deciding what to cook. You may choose to have
