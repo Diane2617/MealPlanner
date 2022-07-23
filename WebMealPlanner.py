@@ -19,17 +19,40 @@ def WelcomeGreeting():
     
     <p><a href="standard">Standard Meal</a></p>
 
-    <p><a href="customMeal">Custom Meal</a></p>
+    <p><a href="custom">Custom Meal</a></p>
 
 '''
 @app.route('/custom')
 def customMeal():
-  pass
+  return f'''
+  <form action="/mealcustom" method="POST">
+    <h3>Input some information to help me create your custom meal.</h3>
+    <p>
+      <label for="Name">Your name:</label>
+      <input type="text" name="Name"/>
+    </p>
+    <p>
+      <label for="NumDays">Number of days you would like the meal for:</label>
+      <input type="number" name="NumDays"/>
+    </p>
+
+    <p>
+      <label for="CustomSides">Number of sides:</label>
+      <input type="number" name="CustomSides"/>
+    </p>
+
+    <p>
+      <label for="CustomVege">Number of veges:</label>
+      <input type="number" name="CustomVege"/>
+    </p>
+    <input type="submit"/> 
+</form>
+  '''
 
 @app.route('/standard')
 def standard():
   return f'''
-  <form action="/meal" method="POST">
+  <form action="/mealstandard" method="POST">
     <h3>Input some information to help me get you started</h3>
     <p>
       <label for="Name">Your name:</label>
@@ -44,24 +67,22 @@ def standard():
   </form>
   '''
 
-@app.route('/meal', methods=["GET", "POST"])
+@app.route('/mealstandard', methods=["GET", "POST"])
 def mealshow():
-#  standardMeal = request.form["Standard"]
-
-#  {% if standardMeal == "Yes"}
   mealdisplay = meal_generator(int(request.form["NumDays"]), 2, 1)
   return f'''<p> Hi {request.form["Name"]} your meals are:
     <ul>
     {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
     </ul> </p> '''
-#  {% else %}
-#    mealdisplay = meal_generator(int(request.form["NumDays"]), int(request.form[2, 1)
-#      return f'''<p> Hi {request.form["Name"]}
-#      <ul>
-#      {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
-#      </ul> </p> '''
 
-#  {% endif %}  
+@app.route('/mealcustom', methods=["GET", "POST"])
+def customshow():
+  mealdisplay = meal_generator(int(request.form["NumDays"]), int(request.form["CustomSides"]), int(request.form["CustomVege"]))
+  return f'''<p> Hi {request.form["Name"]} your meals are:
+    <ul>
+    {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
+    </ul> </p> '''
+
    
 
 

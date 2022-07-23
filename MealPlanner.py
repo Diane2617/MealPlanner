@@ -46,9 +46,9 @@ class Meal:
 
     def Mealdisplay(self, day_count):
         if day_count > 1:
-            return f"""For your meal on day {num2words(day_count)}, you will be having {self.prep} {self.meat} with {self.sides} and {self.veges}."""
+            return f"""For your meal on day {num2words(day_count)}, you will be having {self.prep} {self.meat} with {', '.join(self.sides)} and {', '.join(self.veges)}."""
         else:
-            return f"""For this meal you will be having {self.prep} {self.meat} with {self.sides} and {self.veges}."""
+            return f"""For this meal you will be having {self.prep} {self.meat} with {', '.join(self.sides)} and {', '.join(self.veges)}."""
             
 
 def meal_generator(num_meals, NumSides, NumVeges, meal_day=1):
@@ -89,7 +89,7 @@ I will give a a protein, and a method of preparation, with two sides.
     num_meals = int(input("How many days would you like a meal plan for? "))
     meal_generator(1, num_meals)
 
-print(meal_generator(5, 1, 1))
+print(meal_generator(5, 1, 2))
 
 
 
