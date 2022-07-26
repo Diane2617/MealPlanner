@@ -89,7 +89,7 @@ I will give a a protein, and a method of preparation, with two sides.
     num_meals = int(input("How many days would you like a meal plan for? "))
     meal_generator(1, num_meals)
 
-print(meal_generator(5, 1, 2))
+#print(meal_generator(5, 1, 2))
 
 
 

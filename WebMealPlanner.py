@@ -25,7 +25,7 @@ def WelcomeGreeting():
 @app.route('/custom')
 def customMeal():
   return f'''
-  <form action="/mealcustom" method="POST">
+  <form action="/meal" method="POST">
     <h3>Input some information to help me create your custom meal.</h3>
     <p>
       <label for="Name">Your name:</label>
@@ -52,7 +52,7 @@ def customMeal():
 @app.route('/standard')
 def standard():
   return f'''
-  <form action="/mealstandard" method="POST">
+  <form action="/meal" method="POST">
     <h3>Input some information to help me get you started</h3>
     <p>
       <label for="Name">Your name:</label>
@@ -67,21 +67,22 @@ def standard():
   </form>
   '''
 
-@app.route('/mealstandard', methods=["GET", "POST"])
+@app.route('/meal', methods=["GET", "POST"])
 def mealshow():
-  mealdisplay = meal_generator(int(request.form["NumDays"]), 2, 1)
+  print(request.form)
+  mealdisplay = meal_generator(int(request.form["NumDays"]), int(request.form.get("CustomSides", 2)), int(request.form.get("CustomVege", 1)))
   return f'''<p> Hi {request.form["Name"]} your meals are:
     <ul>
     {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
     </ul> </p> '''
 
-@app.route('/mealcustom', methods=["GET", "POST"])
-def customshow():
-  mealdisplay = meal_generator(int(request.form["NumDays"]), int(request.form["CustomSides"]), int(request.form["CustomVege"]))
-  return f'''<p> Hi {request.form["Name"]} your meals are:
-    <ul>
-    {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
-    </ul> </p> '''
+#@app.route('/mealcustom', methods=["GET", "POST"])
+# def customshow():
+#   mealdisplay = meal_generator(int(request.form["NumDays"]), int(request.form["CustomSides"]), int(request.form["CustomVege"]))
+#   return f'''<p> Hi {request.form["Name"]} your meals are:
+#     <ul>
+#     {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
+#     </ul> </p> '''
 
    
 
