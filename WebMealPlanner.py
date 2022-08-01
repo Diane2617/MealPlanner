@@ -1,4 +1,5 @@
 #import Flask class
+from fileinput import filename
 from tokenize import Name
 from flask import Flask, request
 
@@ -9,10 +10,12 @@ from MealPlanner import Meal, meal_generator
 #Create Flask object
 app = Flask(__name__)
 
+
 @app.route('/')
 @app.route('/home', methods=["GET", "POST"])
 def WelcomeGreeting():
-    return f'''<h1>Welcome to the Meal Planner!<h1>
+    return f'''
+    <h1>Welcome to the Meal Planner!<h1>
     <p>I can take the headache out of deciding what to cook. You may choose to have
     a standard meal which is a protein, a method of preparation, two sides and a vegetable. 
     Alternatively, you may choose how many sides and vegetable you wish to have with your meal.</p>
@@ -26,7 +29,10 @@ def WelcomeGreeting():
 def customMeal():
   return f'''
   <form action="/meal" method="POST">
-    <h3>Input some information to help me create your custom meal.</h3>
+    <h3 style = "color: rgba(36, 140, 238, 0.5);
+    font-family: Cambria;
+    font-weight: 100;
+    font-size: 22px;">Input some information to help me create your custom meal.</h3>
     <p>
       <label for="Name">Your name:</label>
       <input type="text" name="Name"/>
@@ -75,15 +81,6 @@ def mealshow():
     <ul>
     {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
     </ul> </p> '''
-
-#@app.route('/mealcustom', methods=["GET", "POST"])
-# def customshow():
-#   mealdisplay = meal_generator(int(request.form["NumDays"]), int(request.form["CustomSides"]), int(request.form["CustomVege"]))
-#   return f'''<p> Hi {request.form["Name"]} your meals are:
-#     <ul>
-#     {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
-#     </ul> </p> '''
-
    
 
 
