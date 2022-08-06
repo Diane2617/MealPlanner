@@ -1,19 +1,39 @@
+{% from "customform.html" import customMealInfo with context %}
+{% from "standardform.html" import standardMealInfo with context %}
+{% from "yourbuildform.html" import yourBuildInfo with context %}
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Build Your Meals</title>
-        <link rel="stylesheet" href="styletemplate.css"
-    </head>
 
-    <body> 
-        <nav class="navigation">
-            <ul>
-              <li><a href="standard">Standard Meal</a></li>
-              <li><a href="custom">Custom Structured Meal</a></li>
-              <li><a href="custom">Your Meal Build </a></li>
-            </ul>
-        </nav>
+<head>
+    <title> Build Your Meals</title>
+    <link rel="stylesheet" href="styletemplate.css" </head>
 
-        
-    </body>
+<body>
+    <div> 
+    <nav class="navigation">
+        <ul>
+            <li><a href="standard">Standard Meal</a></li>
+            <li><a href="custom">Custom Structured Meal</a></li>
+            <li>Your Meal Build</li>
+            <li>Grocery List</li>
+        </ul>
+    </nav>
+</div>
+    <h2>Fill in the information below to help me build your desired meals</h2>
+
+    {% if choice == 'custom' %}
+    {{ customMealInfo() }}
+    {% elif choice == 'standard' %}
+    {{ standardMealInfo() }}
+    {% else %}
+    {{ yourBuildInfo() }}
+    {% endif %}
+
+
+
+
+
+</body>
+
 </html>

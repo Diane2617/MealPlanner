@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<!-- Custom Meal Form -->
+{% macro customMealInfo() -%}
+
+<form>
+    <p>
+        <label for="Name">Your name:</label>
+        <input type="text" name="Name" />
+    </p>
+    <p>
+        <label for="NumDays">Number of days you would like the meal for:</label>
+        <input type="number" name="NumDays" />
+    </p>
+
+    <p>
+        <label for="CustomSides">Number of sides:</label>
+        <input type="number" name="CustomSides" />
+    </p>
+
+    <p>
+        <label for="CustomVege">Number of veges:</label>
+        <input type="number" name="CustomVege" />
+    </p>
+
+    <input type="submit" />
+
+</form>
+
+{%- endmacro %}
+
+</html>

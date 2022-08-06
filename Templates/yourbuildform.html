@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<!-- Your Meal Build Form -->
+{% macro yourBuildInfo() -%}
+
+<form>
+    <p>
+        <label for="Name">Your name:</label>
+        <input type="text" name="Name" />
+    </p>
+    <p>
+        <label for="NumDays">Number of days you would like the meal for:</label>
+        <input type="number" name="NumDays" />
+    </p>
+
+    <p>
+        <label for="YourProtein">Proteins of your choice:</label>
+        <input type="text" name="YourProtein" />
+    </p>
+
+    <p>
+        <label for="YourProteinNum">Number of protein per meal:</label>
+        <input type="number" name="YourProteinNum" />
+    </p>
+    <p>
+        <label for="YourSides">Sides of your choice:</label>
+        <input type="text" name="YourSides" />
+    </p>
+    <p>
+        <label for="YourSidesNum">Number of sides per meal:</label>
+        <input type="number" name="YourSidesNum" />
+    </p>
+    <div>
+    <p>
+        <label for="YourVege">Vegetables of your choice:</label>
+        <input type="text" name="YourVege" />
+    </p>
+    <p>
+        <label for="YourVegeNum">Number of veges per meal:</label>
+        <input type="number" name="YourVegeNum" />
+    </p>
+    </div>
+
+    <input type="submit" />
+
+</form>
+
+{%- endmacro %}
+
+</html>
