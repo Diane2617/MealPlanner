@@ -10,10 +10,14 @@
             <ul>
               <li><a href="standard">Standard Meal</a></li>
               <li><a href="custom">Custom Structured Meal</a></li>
-              <li><a href="custom">Your Meal Build </a></li>
+              <li><a href="yourbuild">Your Build</a></li>
+              <li>Grocery List</li>
             </ul>
         </nav>
-
+        <p> Hi {request.form["Name"]} your meals are:
+            <ul>
+            {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
+            </ul> </p>
         
     </body>
 </html>
