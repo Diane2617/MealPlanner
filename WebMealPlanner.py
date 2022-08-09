@@ -43,12 +43,12 @@ def yourMeal():
   
 @app.route('/meal', methods=["GET", "POST"])
 def mealshow():
-  print(request.form)
   mealdisplay = meal_generator(int(request.form["NumDays"]), int(request.form.get("CustomSides", 2)), int(request.form.get("CustomVege", 1)))
+  #return render_template('meal_display.html')
   return f'''<p> Hi {request.form["Name"]} your meals are:
-    <ul>
-    {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
-    </ul> </p> '''
+     <ul>
+     {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
+     </ul> </p> '''
    
 
 
