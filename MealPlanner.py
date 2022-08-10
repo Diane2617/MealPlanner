@@ -29,6 +29,7 @@ class Meal:
         self.sides = meal_sides
         self.veges = meal_veges
         
+        
 
     # return true if any of the following properties are the same (meat, prep & sides)
     def hasSameMealProps(self, other_meal):
@@ -43,6 +44,8 @@ class Meal:
         if any(v in self.veges for v in other_meal.veges):
             return True
         return False
+    # Function for showing either 'and' or a comma
+    
 
     def Mealdisplay(self, day_count):
         if day_count > 1:
