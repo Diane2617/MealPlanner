@@ -15,8 +15,9 @@ vegetables = ["Lettuce", "Carrot", "Cabbage", "Cucumber", "Pumpkin", "Tomatoes"]
 
 
 
-#Function for creating a one day meal plan
+#Class for generating meal plan
 class Meal:
+    # Function for selecting the items which will form a part of the meal
     def __init__(self, NumSides, NumVeges):
         meal_meat = random.choice(protein)
         meal_sides = random.sample((sides), k= NumSides)
@@ -31,7 +32,8 @@ class Meal:
         
         
 
-    # return true if any of the following properties are the same (meat, prep & sides)
+    # Function for ensuring that you do not get the same meal on two consecutive days
+    # it returns true if any of the following properties are the same (meat, prep & sides)
     def hasSameMealProps(self, other_meal):
         if other_meal == None:
             return False
