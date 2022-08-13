@@ -2,6 +2,12 @@ Flask
 
 jinja2
 
+bootstrap
+
+html
+
+css
+
 gunicorn==20.0.4
 
 num2words
