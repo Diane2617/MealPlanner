@@ -17,17 +17,6 @@ def WelcomeGreeting():
     return render_template('home.html')
 
     
-#      f'''
-#     <h1>Welcome to the Meal Planner!<h1>
-#     <p>I can take the headache out of deciding what to cook. You may choose to have
-#     a standard meal which is a protein, a method of preparation, two sides and a vegetable. 
-#     Alternatively, you may choose how many sides and vegetable you wish to have with your meal.</p>
-    
-#     <p><a href="standard">Standard Meal</a></p>
-
-#     <p><a href="custom">Custom Meal</a></p>
-
-# '''
 @app.route('/custom')
 def customMeal():
   return render_template('meal_info.html', choice='custom')
@@ -44,10 +33,11 @@ def yourMeal():
 @app.route('/meal', methods=["GET", "POST"])
 def mealshow():
   mealdisplay = meal_generator(int(request.form["NumDays"]), int(request.form.get("CustomSides", 2)), int(request.form.get("CustomVege", 1)))
-  #return render_template('meal_display.html')
-  return f'''<p> Hi {request.form["Name"]} your meals are:
-     <ul>
-     {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
+  #return render_template('meal_display.html',mealdisplay=mealdisplay)
+  return f'''<p style = "font-family:georgia,garamond,serif;font-size:25px;font-style:italic; text-align: justify"> Hi {request.form["Name"]} your meals are:</p>
+      <ul>
+      
+       {"".join([f"<li>{meal}</li>" for meal in mealdisplay])}
      </ul> </p> '''
    
 
