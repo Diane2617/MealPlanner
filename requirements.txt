@@ -4,6 +4,8 @@ jinja2
 
 html
 
+javascript
+
 css
 
 gunicorn==20.0.4
