@@ -8,7 +8,7 @@ from flask import Flask, request, render_template
 from MealPlanner import Meal, meal_generator
 
 #Create Flask object
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 
 @app.route('/')
